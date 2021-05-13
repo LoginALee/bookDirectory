@@ -1,4 +1,4 @@
-import { models } from "./models";
+const models = require("./models");
 const User = models.User;
 const Book = models.Book;
 
@@ -10,10 +10,10 @@ User.create({
   username: "ale12",
 })
   .then((newUser) => {
-    console.log(newUser.get());
+    console.log("User created", newUser.get());
   })
   .catch((err) => {
-    console.log(err);
+    console.log("Error during creating user", err);
   });
 
 Book.bulkCreate([
@@ -46,29 +46,29 @@ Book.bulkCreate([
   },
 ])
   .then((newBooks) => {
-    console.log(newBooks);
+    console.log("Created books", newBooks);
   })
   .catch((err) => {
-    console.log(err);
+    console.log("Error creating books", err);
   });
 
-Book.finOne({
+Book.findOne({
   where: { title: "Otro libro 2" },
   include: "user",
 })
   .then((findedBook) => {
-    console.log(findedBook);
-    console.log(findedBook.user);
+    console.log("Finded book: ", findedBook);
+    console.log("Finded book user:", findedBook.user);
   })
   .catch((err) => {
-    console.log(err);
+    console.log("Error finding book", err);
   });
 
 User.findByPk(1, { include: ["books"] })
   .then((user) => {
-    console.log(user);
-    console.log(user.get().books);
+    console.log("Finded user: ", user);
+    console.log("Finded user books", user.get().books);
   })
   .catch((err) => {
-    console.log(err);
+    console.log("Error finding user", err);
   });
