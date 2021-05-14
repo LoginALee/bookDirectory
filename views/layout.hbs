@@ -5,6 +5,9 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    {{#if messages.info}}
+    <h1>{{messages.info}}</h1>
+    {{/if}}
     {{> header}}
     {{{body}}}
   </body>
