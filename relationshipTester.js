@@ -24,7 +24,7 @@ Book.bulkCreate([
     abstract: "Resumen...",
     cover:
       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F5%2F52%2FEnglish_textbook.jpg%2F1200px-English_textbook.jpg&f=1&nofb=1",
-    userId: 1,
+    userId: 2,
   },
   {
     title: "Otro libro",
@@ -33,7 +33,7 @@ Book.bulkCreate([
     abstract: "Resumen...",
     cover:
       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F5%2F52%2FEnglish_textbook.jpg%2F1200px-English_textbook.jpg&f=1&nofb=1",
-    userId: 1,
+    userId: 2,
   },
   {
     title: "Otro libro 2",
@@ -42,7 +42,7 @@ Book.bulkCreate([
     abstract: "Resumen...",
     cover:
       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F5%2F52%2FEnglish_textbook.jpg%2F1200px-English_textbook.jpg&f=1&nofb=1",
-    userId: 1,
+    userId: 2,
   },
 ])
   .then((newBooks) => {

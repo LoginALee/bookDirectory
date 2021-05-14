@@ -1,0 +1,42 @@
+<form method='POST' action='/books/edit/{{book.id}}'>
+  <div class="container-fluid">
+    <div class="form-group row align-items-center">
+      <label for="title" class="col-1 col-form-label">Title</label>
+        <div class="col">
+          <input type='text' class="form-control" 
+            placeholder="Book title" name='title' value={{book.title}}/> 
+        </div>
+    </div> 
+
+    <div class="form-group row">
+      <label for="author" class="col-1 col-form-label">Author</label>
+      <div class="col">
+        <input type="text" class="form-control" 
+                           id='author' name='author' value={{book.author}} placeholder="Book author">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="publication_date" class="col-1 col-form-label">Date</label>
+      <div class="col">
+        <input type="date" class="form-control" 
+               id='publication_date' name='publication_date' value={{book.publication_date}} placeholder="Publication date">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <textarea class="form-control" id="abstract" name='abstract' 
+                                     rows="5">{{book.abstract}}</textarea>
+    </div>
+
+    <div class="form-group row">
+      <label for="cover" class="col-1 col-form-label">Book cover link</label>
+      <div class="col">
+        <input type="text" class="form-control" 
+                           id='cover' name='cover' placeholder="Photo URL" value={{book.cover}}>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-outline-dark">Submit edit</button>
+ </div>
+</form>

@@ -1,0 +1,7 @@
+{{#each books}}
+<h2>{{ title }}</h2>
+<h3><a href="/books/{{ id }}">Info</a></h3>
+<h3><a href="/books/destroy/confirm/{{ id }}">Delete</a></h3>
+<h3><a href="/books/edit/{{ id }}">Update</a></h3>
+<br/>
+{{/each}}
