@@ -31,6 +31,7 @@ const createTransport = () => {
   });
   return transport;
 };
+
 const sendMail = async (view, user) => {
   const transporter = createTransport();
   try {
