@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router();
 const db = require("../models");
-const isAuth = require("./authMiddleware").isAuth;
-const isNotAuth = require("./authMiddleware").isNotAuth;
+const isAuth = require("../middleware/authMiddleware").isAuth;
+const isNotAuth = require("../middleware/authMiddleware").isNotAuth;
 
 router.get("/add", isAuth, async (req, res, next) => {
   try {
