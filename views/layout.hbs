@@ -6,9 +6,12 @@
   </head>
   <body>
     {{#if messages.info}}
-    <h1>{{messages.info}}</h1>
+      <h1>{{messages.info}}</h1>
     {{/if}}
-    {{> header}}
+    {{#if noHeader}}
+    {{else}}
+      {{> header}}
+    {{/if}}
     {{{body}}}
   </body>
 </html>
