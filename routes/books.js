@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const db = require("../models");
-const pdf = require("html-pdf");
 const Book = require("../controllers/booksController");
 const isAuth = require("../middleware/authMiddleware").isAuth;
 
