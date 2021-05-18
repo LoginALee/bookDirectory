@@ -5,7 +5,7 @@ const db = require("../models");
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
-const initializePassport = require("../passport-config");
+const initializePassport = require("../helpers/passport-config");
 const isAuth = require("../middleware/authMiddleware").isAuth;
 const isNotAuth = require("../middleware/authMiddleware").isNotAuth;
 
