@@ -1,28 +1,75 @@
 const nodemailer = require("nodemailer");
+const { google } = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
+
+const oauth2Client = new OAuth2(
+  process.env.CLIENT_ID,
+  process.env.CLIENT_SECRET,
+  "https://developers.google.com/oauthplayground"
+);
+
+oauth2Client.setCredentials({
+  refresh_token: process.env.REFRESH_TOKEN,
+});
+
+const accessToken = oauth2Client.getAccessToken();
 
 const createTransport = () => {
   const transport = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
+    service: "gmail",
     auth: {
-      user: "48ae022c783bae",
-      pass: "7f3f83cdf867d9",
+      type: "OAuth2",
+      user: process.env.GMAIL_ACCOUNT,
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      refreshToken: process.env.REFRESH_TOKEN,
+      accessToken: accessToken,
+      tls: {
+        rejectUnauthorized: false,
+      },
     },
   });
   return transport;
 };
-
 const sendMail = async (view, user) => {
   const transporter = createTransport();
-  const info = await transporter.sendMail({
-    from: "Book App <alejandrodxwwe@gmail.com>",
-    to: user.email,
-    subject: `New notification ${user.username}!`,
-    html: view,
-  });
-  console.log("Message sent: %s", info.messageId);
-
+  const info = await transporter.sendMail(
+    {
+      from: "Book App <alejandrodxwwe@gmail.com>",
+      to: user.email,
+      subject: `New notification ${user.username}!`,
+      html: view,
+    },
+    (err, res) => {
+      err ? console.log(err) : console.log(res);
+      transporter.close();
+    }
+  );
   return;
 };
+
+//This was used to test emails with Mailtrap
+//
+// const createTransport = () => {
+//   const transport = nodemailer.createTransport({
+//     host: "smtp.mailtrap.io",
+//     port: 2525,
+//     auth: {
+//       user: "48ae022c783bae",
+//       pass: "7f3f83cdf867d9",
+//     },
+//   });
+//   return transport;
+// };
+
+// const sendMail = transport.sendMail({
+// from: "Book App <alejandrodxwwe@gmail.com>",
+// to: user.email,
+// subject: `New notification ${user.username}!`,
+// html: view,
+// }, (err, res) => {
+//   err ? console.log(err) : console.log(res);
+//   transport.close();
+// });
 
 exports.sendMail = sendMail;

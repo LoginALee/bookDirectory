@@ -135,14 +135,14 @@ router.post("/destroy/confirm/:id", isAuth, async (req, res, next) => {
     let id = req.params.id;
     const user = await req.user;
     const book = await db.Book.findByPk(id);
-    const book = await book.destroy();
+    await book.destroy();
     const htmlToSend = getTemplate("deletedBook", {
       username: user.username,
       book: book,
     });
     mailer.sendMail(htmlToSend, user);
     res.status(200);
-    res.redirect("/books/");
+    res.redirect("/");
   } catch (err) {
     next(err);
   }
