@@ -1,0 +1,14 @@
+.flex-container li{
+  display:flex;
+  flex-wrap:wrap;
+  align-items: center;
+}
+
+label{
+  margin: 0.2em;
+}
+
+input{
+  margin: 0.3em;
+}
+
