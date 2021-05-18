@@ -76,6 +76,7 @@ Book.getReport = async (req, res, next) => {
               } else {
                 req.flash("info", "Report created at views/pdf/report.pdf!!");
                 res.redirect("/");
+                res.status(200);
               }
             });
         }
@@ -86,7 +87,7 @@ Book.getReport = async (req, res, next) => {
   }
 };
 
-Book.find = async (req, res, next) => {
+Book.edit = async (req, res, next) => {
   try {
     let id = req.params.id;
     const book = await BookModel.findByPk(id);
@@ -146,6 +147,7 @@ Book.destroy = async (req, res, next) => {
 
     mailer.sendMail(htmlToSend, user);
     req.flash("info", "Book deleted!!");
+    res.status(200);
     res.redirect("/");
   } catch (err) {
     next(err);
