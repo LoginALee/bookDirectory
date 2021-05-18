@@ -3,8 +3,8 @@ const router = express.Router();
 const path = require("path");
 const db = require("../models");
 const pdf = require("html-pdf");
-const isAuth = require("./authMiddleware").isAuth;
-const isNotAuth = require("./authMiddleware").isNotAuth;
+const isAuth = require("../middleware/authMiddleware").isAuth;
+const isNotAuth = require("../middleware/authMiddleware").isNotAuth;
 const mailer = require("../email/mailer");
 const getTemplate = require("../helpers/email-template").getTemplate;
 
