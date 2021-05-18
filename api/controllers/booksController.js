@@ -1,9 +1,9 @@
 const Sequelize = require("sequelize");
-const db = require("../models");
+const db = require("../../models");
 const BookModel = db.Book;
 const pdf = require("html-pdf");
-const mailer = require("../email/mailer");
-const getTemplate = require("../helpers/email-template").getTemplate;
+const mailer = require("../../email/mailer");
+const getTemplate = require("../../helpers/email-template").getTemplate;
 
 let Book = {};
 
