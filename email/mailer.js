@@ -33,18 +33,17 @@ const createTransport = () => {
 };
 const sendMail = async (view, user) => {
   const transporter = createTransport();
-  const info = await transporter.sendMail(
-    {
+  try {
+    const info = await transporter.sendMail({
       from: "Book App <alejandrodxwwe@gmail.com>",
       to: user.email,
       subject: `New notification ${user.username}!`,
       html: view,
-    },
-    (err, res) => {
-      err ? console.log(err) : console.log(res);
-      transporter.close();
-    }
-  );
+    });
+  } catch (err) {
+    err ? console.log(err) : console.log(res);
+  }
+  transporter.close();
   return;
 };
 
