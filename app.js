@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 hbs.registerPartials(path.join(__dirname, "partials"));
 app.use(methodOverride("_method"));
 
-require("./auth/auth")(passport, app);
+require("./routes/auth/auth")(passport, app);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/books", booksRouter);

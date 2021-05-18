@@ -1,11 +1,11 @@
 var express = require("express");
-const User = require("../api/controllers/usersController");
+const User = require("../../api/controllers/usersController");
 const flash = require("express-flash");
 const session = require("express-session");
-const initializePassport = require("../helpers/passport-config");
-const isAuth = require("../middleware/authMiddleware").isAuth;
-const isNotAuth = require("../middleware/authMiddleware").isNotAuth;
-const userHelpers = require("../helpers/user-helpers");
+const initializePassport = require("../../helpers/passport-config");
+const isAuth = require("../../middleware/authMiddleware").isAuth;
+const isNotAuth = require("../../middleware/authMiddleware").isNotAuth;
+const userHelpers = require("../../helpers/user-helpers");
 
 module.exports = function (passport, router) {
   initializePassport(
