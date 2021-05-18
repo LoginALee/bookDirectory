@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../../models");
+const flash = require("express-flash");
 const BookModel = db.Book;
 const pdf = require("html-pdf");
 const mailer = require("../../email/mailer");
@@ -34,6 +35,7 @@ Book.create = async (req, res, next) => {
       book: book,
     });
     mailer.sendMail(htmlToSend, user);
+    req.flash("info", "Book created!!");
     res.redirect("/books");
   } catch (err) {
     next(err);
@@ -72,8 +74,8 @@ Book.getReport = async (req, res, next) => {
               if (err) {
                 next(err);
               } else {
-                res.send("Report created");
-                res.status(200);
+                req.flash("info", "Report created at views/pdf/report.pdf!!");
+                res.redirect("/");
               }
             });
         }
@@ -109,6 +111,7 @@ Book.update = async (req, res, next) => {
       },
       { where: { id } }
     );
+    req.flash("info", "Book updated!!");
     res.redirect("/books");
     res.status(200);
   } catch (err) {
@@ -142,7 +145,7 @@ Book.destroy = async (req, res, next) => {
     });
 
     mailer.sendMail(htmlToSend, user);
-    res.status(200);
+    req.flash("info", "Book deleted!!");
     res.redirect("/");
   } catch (err) {
     next(err);
