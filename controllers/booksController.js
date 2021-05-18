@@ -84,7 +84,7 @@ Book.getReport = async (req, res, next) => {
   }
 };
 
-Book.edit = async (req, res, next) => {
+Book.find = async (req, res, next) => {
   try {
     let id = req.params.id;
     const book = await BookModel.findByPk(id);

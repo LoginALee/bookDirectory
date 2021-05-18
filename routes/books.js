@@ -12,7 +12,7 @@ router.post("/add", isAuth, Book.create);
 
 router.get("/generate-report", isAuth, Book.getReport);
 
-router.get("/edit/:id", isAuth, Book.edit);
+router.get("/edit/:id", isAuth, Book.find);
 
 router.post("/edit/:id", isAuth, Book.update);
 
