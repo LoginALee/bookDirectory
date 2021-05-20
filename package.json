@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www "
   },
   "dependencies": {
+    "@slack/events-api": "^3.0.0",
+    "@slack/web-api": "^6.2.3",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.4",
