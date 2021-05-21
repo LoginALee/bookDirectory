@@ -3,9 +3,10 @@ const router = express.Router();
 const path = require("path");
 const db = require("../models");
 const pdf = require("html-pdf");
-const hbs = require("hbs");
-const isAuth = require("./authMiddleware").isAuth;
-const isNotAuth = require("./authMiddleware").isNotAuth;
+const isAuth = require("../middleware/authMiddleware").isAuth;
+const isNotAuth = require("../middleware/authMiddleware").isNotAuth;
+const mailer = require("../email/mailer");
+const getTemplate = require("../helpers/email-template").getTemplate;
 
 router.get("/add", isAuth, async (req, res, next) => {
   try {
@@ -21,7 +22,7 @@ router.post("/add", isAuth, async (req, res, next) => {
     const user = await req.user;
     const { title, author, publication_date, abstract, cover } = req.body;
     const userId = await user.id;
-    await db.Book.create({
+    const book = await db.Book.create({
       title,
       author,
       publication_date,
@@ -29,6 +30,11 @@ router.post("/add", isAuth, async (req, res, next) => {
       cover,
       userId,
     });
+    const htmlToSend = getTemplate("newBook", {
+      username: user.username,
+      book: book,
+    });
+    mailer.sendMail(htmlToSend, user);
     res.redirect("/books");
   } catch (err) {
     next(err);
@@ -127,9 +133,16 @@ router.get("/destroy/confirm/:id", isAuth, async (req, res, next) => {
 router.post("/destroy/confirm/:id", isAuth, async (req, res, next) => {
   try {
     let id = req.params.id;
-    const response = await db.Book.destroy({ where: { id } });
+    const user = await req.user;
+    const book = await db.Book.findByPk(id);
+    await book.destroy();
+    const htmlToSend = getTemplate("deletedBook", {
+      username: user.username,
+      book: book,
+    });
+    mailer.sendMail(htmlToSend, user);
     res.status(200);
-    res.redirect("/books/");
+    res.redirect("/");
   } catch (err) {
     next(err);
   }

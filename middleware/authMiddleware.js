@@ -1,3 +1,6 @@
+const fs = require("fs");
+var path = require("path");
+
 module.exports.isAuth = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
