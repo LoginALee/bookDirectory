@@ -1,18 +1,18 @@
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-var createError = require("http-errors");
+const createError = require("http-errors");
 const hbs = require("hbs");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
 const booksRouter = require("./routes/books");
 const methodOverride = require("method-override");
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

@@ -1,5 +1,5 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 const bcrypt = require("bcrypt");
 const db = require("../models");
 const passport = require("passport");
@@ -29,7 +29,6 @@ router.use(function (req, res, next) {
 });
 
 router.get("/", isAuth, async (req, res) => {
-  console.log(req.app.locals);
   let user = await req.user;
   res.render("index", {
     title: "Book Directory",
@@ -68,7 +67,6 @@ router.post("/register", isNotAuth, async (req, res, next) => {
     });
     res.redirect("/login");
   } catch (err) {
-    console.log(err);
     res.redirect("/register");
     next(err);
   }
