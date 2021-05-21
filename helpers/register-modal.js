@@ -1,106 +1,88 @@
-function getBookModal(triggerId) {
+function getRegisterModal(triggerId, userInfo) {
   const modal = {
     trigger_id: triggerId,
     view: {
       type: "modal",
       title: {
         type: "plain_text",
-        text: "Add a book",
+        text: "Register",
       },
       submit: {
         type: "plain_text",
         text: "Submit",
       },
-      callback_id: "add-book",
+      callback_id: "add-user",
       blocks: [
         {
           type: "input",
-          block_id: "title",
+          block_id: "first_name",
           element: {
             type: "plain_text_input",
-            action_id: "title",
+            action_id: "first_name",
             placeholder: {
               type: "plain_text",
-              text: "Book name",
+              text: "First name",
             },
           },
           label: {
             type: "plain_text",
-            text: "Title",
+            text: "First name",
           },
         },
         {
           type: "input",
-          block_id: "author",
+          block_id: "last_name",
           element: {
             type: "plain_text_input",
-            action_id: "author",
+            action_id: "last_name",
             placeholder: {
               type: "plain_text",
-              text: "Author name",
+              text: "Last name",
             },
           },
           label: {
             type: "plain_text",
-            text: "Author",
-            emoji: true,
+            text: "Last name",
           },
         },
         {
           type: "input",
-          block_id: "cover",
+          block_id: "email",
           element: {
             type: "plain_text_input",
-            action_id: "cover",
+            action_id: "email",
             placeholder: {
               type: "plain_text",
-              text: "The URL for the cover",
+              text: `${userInfo.user.profile.email}`,
             },
           },
           label: {
             type: "plain_text",
-            text: "Cover image URL",
-            emoji: true,
-          },
-        },
-        {
-          type: "input",
-          block_id: "abstract",
-          element: {
-            type: "plain_text_input",
-            action_id: "abstract",
-            multiline: true,
-            placeholder: {
-              type: "plain_text",
-              text: "..........",
-            },
-          },
-          label: {
-            type: "plain_text",
-            text: "Abstract",
+            text: "Email",
           },
           hint: {
             type: "plain_text",
-            text: "Description of the book",
+            text: "Your Email account",
           },
         },
         {
           type: "input",
-          block_id: "publication_date",
+          block_id: "password",
           element: {
-            type: "datepicker",
-            initial_date: "1990-04-28",
+            type: "plain_text_input",
             placeholder: {
               type: "plain_text",
-              text: "Select the publication date",
-              emoji: true,
+              text: "Password",
             },
-            action_id: "publication_date",
+            action_id: "password",
           },
           label: {
             type: "plain_text",
-            text: "Publication date",
-            emoji: true,
+            text: "Password",
+          },
+          hint: {
+            type: "plain_text",
+            text: "Your password will be encrypted (secure)",
           },
         },
         {
@@ -122,4 +104,4 @@ function getBookModal(triggerId) {
   return modal;
 }
 
-module.exports = getBookModal;
+module.exports = getRegisterModal;

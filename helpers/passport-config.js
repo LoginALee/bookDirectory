@@ -24,7 +24,7 @@ async function initialize(passport, getUserByUsername, getUserById) {
   );
 
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    return done(null, user.id);
   });
   passport.deserializeUser((id, done) => {
     return done(null, getUserById(id));

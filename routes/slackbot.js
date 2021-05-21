@@ -6,7 +6,9 @@ router.post("/", Bot.index);
 
 router.post("/add-book", Bot.showBookModal);
 
-router.post("/interactions", Bot.addBook);
+router.post("/add-user", Bot.showBookModal);
+
+router.post("/interactions", Bot.handleInteractions);
 
 router.post("/events", Bot.handleEvents);
 
