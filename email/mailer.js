@@ -47,28 +47,4 @@ const sendMail = async (view, user) => {
   return;
 };
 
-//This was used to test emails with Mailtrap
-//
-// const createTransport = () => {
-//   const transport = nodemailer.createTransport({
-//     host: "smtp.mailtrap.io",
-//     port: 2525,
-//     auth: {
-//       user: "48ae022c783bae",
-//       pass: "7f3f83cdf867d9",
-//     },
-//   });
-//   return transport;
-// };
-
-// const sendMail = transport.sendMail({
-// from: "Book App <alejandrodxwwe@gmail.com>",
-// to: user.email,
-// subject: `New notification ${user.username}!`,
-// html: view,
-// }, (err, res) => {
-//   err ? console.log(err) : console.log(res);
-//   transport.close();
-// });
-
 exports.sendMail = sendMail;
