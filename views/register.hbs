@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+<body>
+ <form action="/register" method="POST">
+   <div class="form-group row align-items-center">
+     <label for="firstName" class="col-1 col-form-label">First name</label>
+     <input type="text" name="firstName" id="firstName">
+     <label for="lastName" class="col-1 col-form-label">Last name</label>
+     <input type="text" name="lastName" id="lastName">
+   </div>
+
+   <div class="form-group row align-items-center">
+     <label for="username" class="col-1 col-form-label">Username</label>
+     <input type="text" name="username" id="username">
+     <label for="email" class="col-1 col-form-label">Email</label>
+     <input type="email" name="email" id="email">
+   </div>
+   
+   <div class="form-group row align-items-center">
+     <label for="password" class="col-1 col-form-label">Password</label>
+     <input type="password" name="password" id="password">
+   </div>
+   <input type="submit" value="Register">
+ </form>
+ <a href="/login">Login</a>
+</body>
+</html>

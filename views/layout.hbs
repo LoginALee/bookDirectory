@@ -5,7 +5,13 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    {{message}}
+    {{#if messages.info}}
+      <h1>{{messages.info}}</h1>
+    {{/if}}
+    {{#if noHeader}}
+    {{else}}
+      {{> header}}
+    {{/if}}
     {{{body}}}
   </body>
 </html>
