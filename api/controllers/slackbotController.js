@@ -162,7 +162,6 @@ const addBook = async (values, req, res, next) => {
       }),
       headers: { "Content-Type": "application/json" },
     });
-    console.log(responseMessage);
   } catch (err) {
     console.log("Something went wrong creating the book: ", err);
     return res
