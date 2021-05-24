@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const db = require("../models");
-const pdf = require("html-pdf");
 const Book = require("../controllers/booksController");
 const isAuth = require("../middleware/authMiddleware").isAuth;
 
@@ -12,7 +11,7 @@ router.post("/add", isAuth, Book.create);
 
 router.get("/generate-report", isAuth, Book.getReport);
 
-router.get("/edit/:id", isAuth, Book.find);
+router.get("/edit/:id", isAuth, Book.edit);
 
 router.post("/edit/:id", isAuth, Book.update);
 
