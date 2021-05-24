@@ -4,18 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+  <link rel="stylesheet" href="/stylesheets/login.css" type="text/css">
 </head>
 <body>
   <h1>Login</h1>
-  {{#if messages.error}}
-    <p>{{ messages.error }}</p>
-  {{/if}}
  <form action="/login" method="POST">
-   <label for="name" class="col-1 col-form-label">Username</label>
-   <input type="text" name="username" id="username">
-   <label for="password" class="col-1 col-form-label">Password</label>
-   <input type="password" name="password" id="password">
-   <input type="submit" value="Login">
+   <ul class="flex-container">
+     <li>
+       <label for="name" class="">Username</label>
+       <input type="text" name="username" id="username">
+     </li>
+     <li>
+       <label for="password" class="">Password</label>
+       <input type="password" name="password" id="password">
+     </li>
+     <li>
+       <input type="submit" value="Login">
+     </li>
+   </ul>
  </form>
 <a href="/register">Register</a>
 </body>

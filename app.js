@@ -11,6 +11,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const booksRouter = require("./routes/books");
 const methodOverride = require("method-override");
+const passport = require("passport");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 hbs.registerPartials(path.join(__dirname, "partials"));
 app.use(methodOverride("_method"));
 
+require("./routes/auth/auth")(passport, app);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/books", booksRouter);
